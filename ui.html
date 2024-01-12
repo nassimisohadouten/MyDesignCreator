@@ -1,0 +1,45 @@
+<style>
+  *{
+    background-color: #0b131e;
+  }
+
+  input{
+    display: block;
+  }
+
+  div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .button {
+    background-color: #66A8CB; 
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+</style>
+
+<h1 style="color: white; font-size: 24px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">MyDesignCreator</h1>
+
+<h2 style="color: white; font-size: 16px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-top: 25px; margin-left: 25px; margin-right: 25px;">Welkom, leden van Morgen Internet, tot toegang van de Figma plug-in! Hier kunnen jullie gebruikmaken van een variatie aan mogelijkheden.</h2>
+<h2 style="color: white; font-size: 16px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-top: 5px; margin-left: 25px; margin-right: 25px;">Met de "Genereer" knop kunnen jullie nieuwe templates creëren door de components die beschikbaar zijn in onze library. Laat jullie creativiteit de vrije loop en ontdek de kracht van deze functionaliteit om prachtige designs te produceren. Veel plezier met het verkennen en gebruiken van deze geweldige tool!</h2>
+
+<div style="padding-top: 20px; align-items: center;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <button class="button button-primary" id="btnsubmit">Genereer</button>
+</div>
+
+<script>
+  document.getElementById('btnsubmit').onclick = () => {
+    parent.postMessage({pluginMessage:""}, '*');
+  }
+</script>
