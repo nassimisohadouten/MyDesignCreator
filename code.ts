@@ -11,171 +11,48 @@ figma.ui.onmessage = async (msg) => {
   var aanbodSet = figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "Aanbod") as ComponentSetNode;
   var dienstenSet = figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "Diensten") as ComponentSetNode;
 
-  var rndHeader = Math.floor(Math.random() * 5) + 1;
-  var rndHero = Math.floor(Math.random() * 3) + 1;
-  var rndFooter = Math.floor(Math.random() * 5) + 1;
-  var rndAanbod = Math.floor(Math.random() * 3) + 1;
-  var rndDiensten = Math.floor(Math.random() * 2) + 1;
+  var rndHeader = Math.round(Math.random() * (headersSet.children.length - 1));
+  var rndHero = Math.round(Math.random() * (herosSet.children.length - 1));
+  var rndFooter = Math.round(Math.random() * (footersSet.children.length - 1));
+  var rndAanbod = Math.round(Math.random() * (aanbodSet.children.length - 1));
+  var rndDiensten = Math.round(Math.random() * (dienstenSet.children.length - 1));
 
-  var headerComp = null;
-  var heroComp = null;
-  var aanbodComp = null;
-  var dienstenComp = null;
-  var footerComp = null;
-
-
-  switch (rndHeader)
-  {
-    case 1:
-        headerComp = headersSet.findChild(n => n.name == "Header 1") as ComponentNode;
-        break;
-
-
-      case 2:
-        headerComp = headersSet.findChild(n => n.name == "Header 2") as ComponentNode;
-        break;
-
-
-      case 3:
-        headerComp = headersSet.findChild(n => n.name == "Header 3") as ComponentNode;
-        break;
-
-
-      case 4:
-        headerComp = headersSet.findChild(n => n.name == "Header 4") as ComponentNode;
-        break;
-
-
-      case 5:
-        headerComp = headersSet.findChild(n => n.name == "Header 5") as ComponentNode;
-        break;
-
-
-      default:
-        headerComp = headersSet.findChild(n => n.name == "Header 1") as ComponentNode;
-        break;
-  }
-
-  switch (rndFooter)
-  {
-    case 1:
-        footerComp = footersSet.findChild(n => n.name == "Footer 1") as ComponentNode;
-        break;
-
-
-      case 2:
-        footerComp = footersSet.findChild(n => n.name == "Footer 2") as ComponentNode;
-        break;
-
-
-      case 3:
-        footerComp = footersSet.findChild(n => n.name == "Footer 3") as ComponentNode;
-        break;
-
-
-      case 4:
-        footerComp = footersSet.findChild(n => n.name == "Footer 4") as ComponentNode;
-        break;
-
-
-      case 5:
-        footerComp = footersSet.findChild(n => n.name == "Footer 5") as ComponentNode;
-        break;
-
-
-      default:
-        footerComp = footersSet.findChild(n => n.name == "Footer 1") as ComponentNode;
-        break;
-  }
-
-  switch (rndAanbod)
-  {
-    case 1:
-        aanbodComp = aanbodSet.findChild(n => n.name == "Aanbod 1") as ComponentNode;
-        break;
-
-
-      case 2:
-        aanbodComp = aanbodSet.findChild(n => n.name == "Aanbod 2") as ComponentNode;
-        break;
-
-
-      case 3:
-        aanbodComp = aanbodSet.findChild(n => n.name == "Aanbod 3") as ComponentNode;
-        break;
-
-      default:
-        aanbodComp = aanbodSet.findChild(n => n.name == "Aanbod 1") as ComponentNode;
-        break;
-  }
-
-  switch (rndDiensten)
-  {
-    case 1:
-        dienstenComp = dienstenSet.findChild(n => n.name == "Dienst 1") as ComponentNode;
-        break;
-
-
-      case 2:
-        dienstenComp = dienstenSet.findChild(n => n.name == "Dienst 2") as ComponentNode;
-        break;
-
-
-      default:
-        dienstenComp = dienstenSet.findChild(n => n.name == "Dienst 1") as ComponentNode;
-        break;
-  }
-
-  switch (rndHero)
-  {
-    case 1:
-        heroComp = herosSet.findChild(n => n.name == "Hero 1") as ComponentNode;
-        break;
-
-
-      case 2:
-        heroComp = herosSet.findChild(n => n.name == "Hero 2") as ComponentNode;
-        break;
-
-
-      case 3:
-        heroComp = herosSet.findChild(n => n.name == "Hero 3") as ComponentNode;
-        break;
-
-      default:
-        heroComp = herosSet.findChild(n => n.name == "Hero 1") as ComponentNode;
-        break;
-  }
+  var headerComp = headersSet.children[rndHeader] as ComponentNode;
+  var heroComp = herosSet.children[rndHero] as ComponentNode;;
+  var aanbodComp = aanbodSet.children[rndAanbod] as ComponentNode;;
+  var dienstenComp = dienstenSet.children[rndDiensten] as ComponentNode;;
+  var footerComp = footersSet.children[rndFooter] as ComponentNode;;
 
   var newHeaderComp = headerComp.createInstance();
-  newHeaderComp.name = "Header " + rndHeader.toString();
+  newHeaderComp.name = "Header " + (rndHeader + 1).toString();
   newHeaderComp.x = 0;
 
   var newHeroComp = heroComp.createInstance();
-  newHeroComp.name = "Hero " + rndHero.toString();
+  newHeroComp.name = "Hero " + (rndHero + 1).toString();
   newHeroComp.x = 0;
   newHeroComp.y = newHeaderComp.height + 0;
 
   var newAanbodComp = aanbodComp.createInstance();
-  newAanbodComp.name = "Aanbod " + rndAanbod.toString();
+  newAanbodComp.name = "Aanbod " + (rndAanbod + 1).toString();
   newAanbodComp.x = 0;
   newAanbodComp.y = newHeroComp.height + 220;
 
   var newDienstenComp = dienstenComp.createInstance();
-  newDienstenComp.name = "Diensten " + rndDiensten.toString();
+  newDienstenComp.name = "Diensten " + (rndDiensten + 1).toString();
   newDienstenComp.x = 0;
   newDienstenComp.y = newHeroComp.height + 1329;
 
   var newFooterComp = footerComp.createInstance();
-  newFooterComp.name = "Footer " + rndFooter.toString();
+  newFooterComp.name = "Footer " + (rndFooter + 1).toString();
   newFooterComp.x = 0;
   newFooterComp.y = newDienstenComp.height + 2273;
 
   figma.currentPage.appendChild(newFooterComp);
   figma.currentPage.appendChild(newDienstenComp);
   figma.currentPage.appendChild(newAanbodComp);
-  figma.currentPage.appendChild(newHeaderComp);
   figma.currentPage.appendChild(newHeroComp);
+  figma.currentPage.appendChild(newHeaderComp);
+
  
   nodes.push(newAanbodComp);
   nodes.push(newHeroComp);
@@ -188,28 +65,5 @@ figma.ui.onmessage = async (msg) => {
   figma.viewport.scrollAndZoomIntoView(nodes);
 
   figma.closePlugin();
-
-  /* if (rnd == 1)
-  {
-    headerComp = headersSet.findChild(n => n.name == "Header 1") as ComponentNode;
-    footerComp = footersSet.findChild(n => n.name == "Footer 1") as ComponentNode;
-    name = "Footer 1";
-  }
-
-
-  if (rnd == 2)
-  {
-    headerComp = headersSet.findChild(n => n.name == "Header 2") as ComponentNode;
-    footerComp = footersSet.findChild(n => n.name == "Footer 2") as ComponentNode;
-    name = "Footer 2";
-  }
-
-
-  if (rnd == 3)
-  {
-    headerComp = headersSet.findChild(n => n.name == "Header 3") as ComponentNode;
-    footerComp = footersSet.findChild(n => n.name == "Footer 3") as ComponentNode;
-    name = "Footer 3";
-  } */
  
 }

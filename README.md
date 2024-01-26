@@ -1,23 +1,40 @@
-# MyDesignCreator #
+Below are the steps to get your plugin running. You can also find instructions at:
 
-Dit is een Figma-plugin waarmee je eenvoudig een homepagina kunt genereren met behulp van een bibliotheek met kant-en-klare componenten. Het enige wat je hoeft te doen, is op de "Genereer" knop te klikken en het plugin zal automatisch een homepagina-ontwerp maken op basis van de beschikbare components in de bibliotheek.
+  https://www.figma.com/plugin-docs/plugin-quickstart-guide/
 
-## Installatie
+This plugin template uses Typescript and NPM, two standard tools in creating JavaScript applications.
 
-1. Open Figma en selecteer het Figma-bestand waarin je de plugin wilt gebruiken.
-1. Ga naar het tabblad "Plugins" in de linkerzijbalk.
-1. Zoek naar "Auto-Homepage Generator" en klik op "Install" om de plugin aan je Figma-omgeving toe te voegen.
+First, download Node.js which comes with NPM. This will allow you to install TypeScript and other
+libraries. You can find the download link here:
 
-## Gebruik
+  https://nodejs.org/en/download/
 
+Next, install TypeScript using the command:
 
-1. Open je Figma-bestand met het gewenste ontwerp.
-1. Selecteer een frame waarin je de homepagina wilt genereren.
-1. Ga naar het tabblad "Plugins" en selecteer "Auto-Homepage Generator".
-1. Klik op de "Genereer" knop en zie hoe de plugin automatisch een homepagina ontwerpt op basis van de beschikbare components in de bibliotheek.
+  npm install -g typescript
 
-## Bibliotheek van Components
-De plugin maakt gebruik van een bibliotheek met kant-en-klare components om het ontwerpproces te versnellen. Zorg ervoor dat je deze bibliotheek hebt geïmporteerd in je Figma-bestand voordat je de plugin gebruikt.
+Finally, in the directory of your plugin, get the latest type definitions for the plugin API by running:
 
-## Aanpassingen
-Wil je de gegenereerde homepagina aanpassen? Geen probleem! Na het genereren van de homepagina kun je handmatig wijzigingen aanbrengen in het ontwerp om aan je specifieke behoeften te voldoen.
+  npm install --save-dev @figma/plugin-typings
+
+If you are familiar with JavaScript, TypeScript will look very familiar. In fact, valid JavaScript code
+is already valid Typescript code.
+
+TypeScript adds type annotations to variables. This allows code editors such as Visual Studio Code
+to provide information about the Figma API while you are writing code, as well as help catch bugs
+you previously didn't notice.
+
+For more information, visit https://www.typescriptlang.org/
+
+Using TypeScript requires a compiler to convert TypeScript (code.ts) into JavaScript (code.js)
+for the browser to run.
+
+We recommend writing TypeScript code using Visual Studio code:
+
+1. Download Visual Studio Code if you haven't already: https://code.visualstudio.com/.
+2. Open this directory in Visual Studio Code.
+3. Compile TypeScript to JavaScript: Run the "Terminal > Run Build Task..." menu item,
+    then select "npm: watch". You will have to do this again every time
+    you reopen Visual Studio Code.
+
+That's it! Visual Studio Code will regenerate the JavaScript file every time you save.
